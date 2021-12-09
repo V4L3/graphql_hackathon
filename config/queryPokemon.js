@@ -1,5 +1,5 @@
 const QUERY_POKEMON = `
-  query queryPokemon($limit: Int = 649) {
+  query queryPokemon($limit: Int = 200) {
     pokemon_v2_pokemon(limit: $limit) {
       name
       pokemon_species_id

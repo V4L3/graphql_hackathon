@@ -1,5 +1,5 @@
 const QUERY_POKEMON_FETCH = `{
-  pokemon_v2_pokemon(limit:600) {
+  pokemon_v2_pokemon(limit:200) {
     name
     pokemon_species_id
     order
