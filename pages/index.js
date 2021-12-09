@@ -22,6 +22,7 @@ export default function Home() {
         <Link href="/graphql-hooks-ssr">Go To Grapql-Hooks-SSR</Link>
         <Link href="/urql">Go To Urql</Link>
         <Link href="/urql-ssr">Go To Urql-SSR</Link>
+        <Link href="/urql-ssg">Go To Urql-SSG</Link>
         </div>
       </main>
     </div>
