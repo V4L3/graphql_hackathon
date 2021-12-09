@@ -32,7 +32,10 @@ export const getServerSideProps = async () => {
   })
 
   const { data, error } = await client.request({
-    query: QUERY_POKEMON
+    query: QUERY_POKEMON,
+    // variables: {
+    //   limit: 1
+    // }
   })
 
   return {
