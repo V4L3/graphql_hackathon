@@ -1,12 +1,11 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { GraphQLClient, ClientContext } from 'graphql-hooks'
-import WithGraphQLHooks from '../components/WithGraphQLHooks';
+import { GraphQLClient } from 'graphql-hooks'
 import QUERY_POKEMON from '../config/queryPokemon';
 import Pokedex from '../components/Pokedex';
+import memCache from 'graphql-hooks-memcache';
 
 export default function GraphQLHooks({data}) {
-  console.log('hi', data)
   return (
       <div className={styles.container}>
         <Head>
@@ -19,7 +18,6 @@ export default function GraphQLHooks({data}) {
           <h1 className={styles.title}>
             Welcome to the World of Pokemon!
           </h1>
-          {/* <WithGraphQLHooks /> */}
           <Pokedex data={data} />
         </main>
       </div>
@@ -28,7 +26,9 @@ export default function GraphQLHooks({data}) {
 
 export const getServerSideProps = async () => {
   const client = new GraphQLClient({
-    url: 'https://beta.pokeapi.co/graphql/v1beta'
+    url: 'https://beta.pokeapi.co/graphql/v1beta',
+    ssrMode: true,
+    cache: memCache()
   })
 
   const { data, error } = await client.request({
