@@ -5,9 +5,8 @@ import QUERY_POKEMON from '../config/queryPokemon';
 import { useQuery, Provider } from 'urql';
 import Pokedex from '../components/Pokedex';
 
-const Urql = () => {
+const UrqlSsr = () => {
   const [res] = useQuery({ query: QUERY_POKEMON });
-  console.log(res);
   return (
     <Provider value={getClient()}>
       <div className={styles.container}>
@@ -18,11 +17,29 @@ const Urql = () => {
         </Head>
         <main className={styles.main}>
           <h1 className={styles.title}>Welcome to the World of Pokemon!</h1>
-            {res?.data && <Pokedex data={res.data} />}
+            { res.loading ? <p>Loading...</p> : <Pokedex data={res.data} /> }
         </main>
       </div>
     </Provider>
   );
 };
 
-export default withClient(Urql);
+export const getServerSideProps = async (ctx) => {
+  const [client, ssrCache] = getClient();
+
+  const queryParams = {
+    preview: !!ctx?.preview,
+    ...ctx.params
+  };
+
+  await client?.query(QUERY_POKEMON).toPromise();
+
+  return {
+    props: {
+      urqlState: ssrCache.extractData(),
+      queryParams,
+    },
+  };
+};
+
+export default withClient(UrqlSsr);
