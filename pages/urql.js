@@ -18,7 +18,7 @@ const Urql = () => {
         </Head>
         <main className={styles.main}>
           <h1 className={styles.title}>Welcome to the World of Pokemon!</h1>
-            {res?.data && <Pokedex data={res.data} />}
+          { res.fetching ? <p>Loading...</p> : <Pokedex data={res.data} /> }
         </main>
       </div>
     </Provider>

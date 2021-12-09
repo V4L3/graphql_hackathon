@@ -1,21 +1,7 @@
 import { ssrExchange, dedupExchange, cacheExchange, fetchExchange } from '@urql/core';
 import { initUrqlClient, withUrqlClient } from 'next-urql';
 
-
-
 const isServer = typeof window === 'undefined';
-
-
-const makeConfig = () => {
-  return {
-    url: 'https://beta.pokeapi.co/graphql/v1beta' || '',
-    fetchOptions: {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_PREVIEW_TOKEN ?? ''}`,
-      },
-    }
-  };
-};
 
 const makeSsrCache = () =>
   ssrExchange({
@@ -24,23 +10,23 @@ const makeSsrCache = () =>
     staleWhileRevalidate: !isServer,
   });
 
-const makeClient = (ssrCache, isPreviewMode = false) => {
+const makeClient = (ssrCache) => {
   const clientConfig = {
-    ...makeConfig(isPreviewMode),
+    url: 'https://beta.pokeapi.co/graphql/v1beta' || '',
     exchanges: [dedupExchange, cacheExchange, ssrCache, fetchExchange],
   };
   return initUrqlClient(clientConfig, true);
 };
 
-const getClient = (isPreviewMode = false) => {
+const getClient = () => {
   const ssrCache = makeSsrCache();
-  return [makeClient(ssrCache, isPreviewMode), ssrCache];
+  return [makeClient(ssrCache), ssrCache];
 };
 
 const withClient = (Page) => {
   return withUrqlClient(
     (ssr) => ({
-      ...makeConfig(false),
+      url: 'https://beta.pokeapi.co/graphql/v1beta' || '',
       exchanges: [dedupExchange, cacheExchange, ssr, fetchExchange],
     }),
     {
