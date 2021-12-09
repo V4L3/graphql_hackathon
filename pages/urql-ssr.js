@@ -18,7 +18,10 @@ const UrqlSsr = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={styles.main}>
-          <Link href="/urql">Go to urql</Link>
+          <div className={styles.flexWrapper}>
+            <Link href="/urql">Go to urql</Link>
+            <Link href="/">Go Home</Link>
+          </div>
           <h1 className={styles.title}>Welcome to the World of Pokemon!</h1>
           {res.fetching ? <p>Loading...</p> : <Pokedex data={res.data} />}
         </main>

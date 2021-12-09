@@ -33,7 +33,10 @@ export default function FetchApi(props) {
       </Head>
 
       <main className={styles.main}>
+      <div className={styles.flexWrapper}>
         <Link href="/fetch-api-ssr">Go To Fetch API-SSR</Link>
+        <Link href="/">Go Home</Link>
+      </div>
         <h1 className={styles.title}>Welcome to the World of Pokemon! FETCH API</h1>
 
         <Pokedex data={pokemons} {...props} />

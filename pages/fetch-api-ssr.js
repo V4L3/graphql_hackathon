@@ -15,7 +15,10 @@ export default function FetchApi({ pokemons }) {
       </Head>
 
       <main className={styles.main}>
-        <Link href="/fetch-api">Go To Fetch API</Link>
+        <div className={styles.flexWrapper}>
+          <Link href="/fetch-api">Go To Fetch API</Link>
+          <Link href="/">Go Home</Link>
+        </div>
         <h1 className={styles.title}>Welcome to the World of Pokemon! FETCH API</h1>
 
         <Pokedex data={pokemons} />

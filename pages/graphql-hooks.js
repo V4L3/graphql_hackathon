@@ -19,7 +19,10 @@ export default function GraphQLHooks() {
         </Head>
 
         <main className={styles.main}>
-          <Link href="/graphql-hooks-ssr">Go To GraphQl-Hooks-SSR</Link>
+          <div className={styles.flexWrapper}>
+            <Link href="/graphql-hooks-ssr">Go To GraphQl-Hooks-SSR</Link>
+            <Link href="/">Go Home</Link>
+          </div>
           <h1 className={styles.title}>Welcome to the World of Pokemon!</h1>
           <WithGraphQLHooks />
         </main>

@@ -116,3 +116,7 @@
   display: grid;
   gap: 1rem;
 }
+
+.flexWrapper {
+  display: flex;
+}

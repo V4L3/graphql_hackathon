@@ -16,7 +16,10 @@ export default function GraphQLHooks({ data }) {
       </Head>
 
       <main className={styles.main}>
-        <Link href="/graphql-hooks">Go To GraphQl-Hooks</Link>
+        <div className={styles.flexWrapper}>
+          <Link href="/graphql-hooks">Go To GraphQl-Hooks</Link>
+          <Link href="/">Go Home</Link>
+        </div>
         <h1 className={styles.title}>Welcome to the World of Pokemon!</h1>
         <Pokedex data={data} />
       </main>
