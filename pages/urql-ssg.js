@@ -20,7 +20,7 @@ const UrqlSsr = () => {
         <main className={styles.main}>
           <div className={styles.flexWrapper}>
             <Link href="/urql">Go to Urql</Link>
-            <Link href="/urql-ssg">Go to Urql-SSG</Link>
+            <Link href="/urql-ssr">Go to Urql-SSR</Link>
             <Link href="/">Go Home</Link>
           </div>
           <h1 className={styles.title}>Welcome to the World of Pokemon!</h1>
@@ -31,7 +31,7 @@ const UrqlSsr = () => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const [client, ssrCache] = getClient();
 
   await client?.query(QUERY_POKEMON).toPromise();

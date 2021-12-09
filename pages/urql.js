@@ -18,7 +18,8 @@ const Urql = () => {
         </Head>
         <main className={styles.main}>
           <div className={styles.flexWrapper}>
-            <Link href="/urql-ssr">Go to urql-ssr</Link>
+            <Link href="/urql-ssr">Go to Urql</Link>
+            <Link href="/urql-ssg">Go to Urql-SSG</Link>
             <Link href="/">Go Home</Link>
           </div>
           <h1 className={styles.title}>Welcome to the World of Pokemon!</h1>
