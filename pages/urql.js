@@ -7,7 +7,6 @@ import Pokedex from '../components/Pokedex';
 
 const Urql = () => {
   const [res] = useQuery({ query: QUERY_POKEMON });
-  console.log(res);
   return (
     <Provider value={getClient()}>
       <div className={styles.container}>

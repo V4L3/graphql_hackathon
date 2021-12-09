@@ -27,7 +27,6 @@ export default function FetchApi({pokemons}) {
 }
 
 export const getServerSideProps = async () => {
-  console.log(QUERY_POKEMON_FETCH);
   const API_URL = 'https://beta.pokeapi.co/graphql/v1beta';
   const fetchPokemons = async () => {
     const response = await fetch(API_URL, {
