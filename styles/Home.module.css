@@ -111,3 +111,8 @@
     flex-direction: column;
   }
 }
+
+.wrapper {
+  display: grid;
+  gap: 1rem;
+}
