@@ -7,7 +7,7 @@ const Pokedex = ({data}) => {
         data.pokemon_v2_pokemon.map((pokemon, i) => (
             <div style={{minHeight: '100vh', padding: '40px', ...getBackgroundColor(pokemon.pokemon_v2_pokemonspecy.pokemon_v2_pokemoncolor.name)}} key={i}>
               <div style={{width: '300px', height: '300px', position: 'relative'}}>
-                <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`} layout='fill' objectFit='contain' />
+                <Image alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`} layout='fill' objectFit='contain' />
               </div>
               <h3>{pokemon.name}</h3>
               <p>{pokemon.base_experience}</p>
