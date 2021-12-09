@@ -20,7 +20,7 @@ export default function GraphQLHooks({data}) {
             Welcome to the World of Pokemon!
           </h1>
           {/* <WithGraphQLHooks /> */}
-          {/* <Pokedex data={data} /> */}
+          <Pokedex data={data} />
         </main>
       </div>
   )
