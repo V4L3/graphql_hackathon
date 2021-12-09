@@ -2,8 +2,9 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { getClient, withClient } from '../config/urqlClient';
 import QUERY_POKEMON from '../config/queryPokemon';
-import { useQuery, Provider } from 'urql';
+import { useQuery, Provider, client } from 'urql';
 import Pokedex from '../components/Pokedex';
+import Link from 'next/link';
 
 const UrqlSsr = () => {
   const [res] = useQuery({ query: QUERY_POKEMON });
@@ -17,8 +18,9 @@ const UrqlSsr = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={styles.main}>
+          <Link href="/urql">Go to urql</Link>
           <h1 className={styles.title}>Welcome to the World of Pokemon!</h1>
-            { res.fetching ? <p>Loading...</p> : <Pokedex data={res.data} /> }
+          {res.fetching ? <p>Loading...</p> : <Pokedex data={res.data} />}
         </main>
       </div>
     </Provider>
@@ -32,7 +34,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      urqlState: ssrCache.extractData()
+      urqlState: ssrCache.extractData(),
     },
   };
 };

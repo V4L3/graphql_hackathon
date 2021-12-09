@@ -4,6 +4,7 @@ import { getClient, withClient } from '../config/urqlClient';
 import QUERY_POKEMON from '../config/queryPokemon';
 import { useQuery, Provider } from 'urql';
 import Pokedex from '../components/Pokedex';
+import Link from 'next/link';
 
 const Urql = () => {
   const [res] = useQuery({ query: QUERY_POKEMON });
@@ -16,8 +17,9 @@ const Urql = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={styles.main}>
+          <Link href="/urql-ssr">Go to urql-ssr</Link>
           <h1 className={styles.title}>Welcome to the World of Pokemon!</h1>
-          { res.fetching ? <p>Loading...</p> : <Pokedex data={res.data} /> }
+          {res.fetching ? <p>Loading...</p> : <Pokedex data={res.data} />}
         </main>
       </div>
     </Provider>

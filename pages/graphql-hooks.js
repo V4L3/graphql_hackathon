@@ -1,11 +1,12 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import { GraphQLClient, ClientContext } from 'graphql-hooks'
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
+import { GraphQLClient, ClientContext } from 'graphql-hooks';
 import WithGraphQLHooks from '../components/WithGraphQLHooks';
+import Link from 'next/link';
 
 const client = new GraphQLClient({
-  url: 'https://beta.pokeapi.co/graphql/v1beta'
-})
+  url: 'https://beta.pokeapi.co/graphql/v1beta',
+});
 
 export default function GraphQLHooks() {
   return (
@@ -18,12 +19,11 @@ export default function GraphQLHooks() {
         </Head>
 
         <main className={styles.main}>
-          <h1 className={styles.title}>
-            Welcome to the World of Pokemon!
-          </h1>
+          <Link href="/graphql-hooks-ssr">Go To GraphQl-Hooks-SSR</Link>
+          <h1 className={styles.title}>Welcome to the World of Pokemon!</h1>
           <WithGraphQLHooks />
         </main>
       </div>
     </ClientContext.Provider>
-  )
+  );
 }
