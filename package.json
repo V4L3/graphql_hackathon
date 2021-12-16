@@ -8,6 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@urql/devtools": "^2.0.3",
+    "@urql/exchange-graphcache": "^4.3.6",
     "graphql": "^15.8.0",
     "graphql-hooks": "^5.5.0",
     "graphql-hooks-memcache": "^2.2.2",

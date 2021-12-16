@@ -1,6 +1,6 @@
-const QUERY_POKEMON = `
-  query queryPokemon($limit: Int = 200) {
-    pokemon_v2_pokemon(limit: $limit) {
+const QUERY_POKEMON_BY_ID = `
+query queryPokemonById($id:Int = 1) {
+  pokemon_v2_pokemon(where: {id: {_eq: $id}}) {
       __typename
       name
       pokemon_species_id
@@ -29,4 +29,4 @@ const QUERY_POKEMON = `
   }
 `;
 
-export default QUERY_POKEMON;
+export default QUERY_POKEMON_BY_ID;

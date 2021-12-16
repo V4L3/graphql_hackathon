@@ -1,6 +1,7 @@
 import { ssrExchange, dedupExchange, cacheExchange, fetchExchange } from '@urql/core';
 import { initUrqlClient, withUrqlClient } from 'next-urql';
 
+import { devtoolsExchange } from '@urql/devtools';
 const isServer = typeof window === 'undefined';
 
 const makeSsrCache = () =>
@@ -13,7 +14,7 @@ const makeSsrCache = () =>
 const makeClient = (ssrCache) => {
   const clientConfig = {
     url: 'https://beta.pokeapi.co/graphql/v1beta' || '',
-    exchanges: [dedupExchange, cacheExchange, ssrCache, fetchExchange],
+    exchanges: [devtoolsExchange, dedupExchange, cacheExchange, ssrCache, fetchExchange],
   };
   return initUrqlClient(clientConfig, true);
 };
@@ -27,7 +28,7 @@ const withClient = (Page) => {
   return withUrqlClient(
     (ssr) => ({
       url: 'https://beta.pokeapi.co/graphql/v1beta' || '',
-      exchanges: [dedupExchange, cacheExchange, ssr, fetchExchange],
+      exchanges: [devtoolsExchange, dedupExchange, cacheExchange, ssr, fetchExchange],
     }),
     {
       ssr: false, // Important so we don't wrap our component in getInitialProps

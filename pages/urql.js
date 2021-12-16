@@ -9,7 +9,7 @@ import Link from 'next/link';
 const Urql = () => {
   const [res] = useQuery({ query: QUERY_POKEMON });
   return (
-    <Provider value={getClient()}>
+
       <div className={styles.container}>
         <Head>
           <title>GraphQL Hooks</title>
@@ -26,7 +26,7 @@ const Urql = () => {
           {res.fetching ? <p>Loading...</p> : <Pokedex data={res.data} />}
         </main>
       </div>
-    </Provider>
+
   );
 };
 
